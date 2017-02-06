@@ -11,25 +11,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/map');
-var HeroSearchService = (function () {
-    function HeroSearchService(http) {
+var AttendeeSearchService = (function () {
+    function AttendeeSearchService(http) {
         this.http = http;
     }
-    HeroSearchService.prototype.search = function (term) {
+    AttendeeSearchService.prototype.search = function (term) {
         return this.http
-            .get("app/heroes/?name=" + term)
+            .get("app/attendees/?name=" + term)
             .map(function (response) { return response.json().data; });
     };
-    HeroSearchService = __decorate([
+    AttendeeSearchService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], HeroSearchService);
-    return HeroSearchService;
+    ], AttendeeSearchService);
+    return AttendeeSearchService;
 }());
-exports.HeroSearchService = HeroSearchService;
+exports.AttendeeSearchService = AttendeeSearchService;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 */ 
-//# sourceMappingURL=hero-search.service.js.map
+//# sourceMappingURL=attendee-search.service.js.map

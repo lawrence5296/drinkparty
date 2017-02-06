@@ -18,24 +18,24 @@ require('rxjs/add/observable/of');
 require('rxjs/add/operator/catch');
 require('rxjs/add/operator/debounceTime');
 require('rxjs/add/operator/distinctUntilChanged');
-var hero_search_service_1 = require('./hero-search.service');
-var HeroSearchComponent = (function () {
-    function HeroSearchComponent(heroSearchService, router) {
-        this.heroSearchService = heroSearchService;
+var attendee_search_service_1 = require('./attendee-search.service');
+var AttendeeSearchComponent = (function () {
+    function AttendeeSearchComponent(attendeeSearchService, router) {
+        this.attendeeSearchService = attendeeSearchService;
         this.router = router;
         this.searchTerms = new Subject_1.Subject();
     }
     // Push a search term into the observable stream.
-    HeroSearchComponent.prototype.search = function (term) {
+    AttendeeSearchComponent.prototype.search = function (term) {
         this.searchTerms.next(term);
     };
-    HeroSearchComponent.prototype.ngOnInit = function () {
+    AttendeeSearchComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.heroes = this.searchTerms
+        this.attendees = this.searchTerms
             .debounceTime(300) // wait 300ms after each keystroke before considering the term
             .distinctUntilChanged() // ignore if next search term is same as previous
             .switchMap(function (term) { return term // switch to new observable each time the term changes
-            ? _this.heroSearchService.search(term)
+            ? _this.attendeeSearchService.search(term)
             : Observable_1.Observable.of([]); })
             .catch(function (error) {
             // TODO: add real error handling
@@ -43,26 +43,26 @@ var HeroSearchComponent = (function () {
             return Observable_1.Observable.of([]);
         });
     };
-    HeroSearchComponent.prototype.gotoDetail = function (hero) {
-        var link = ['/detail', hero.id];
+    AttendeeSearchComponent.prototype.gotoDetail = function (attendee) {
+        var link = ['/detail', attendee.id];
         this.router.navigate(link);
     };
-    HeroSearchComponent = __decorate([
+    AttendeeSearchComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'hero-search',
-            templateUrl: './hero-search.component.html',
-            styleUrls: ['./hero-search.component.css'],
-            providers: [hero_search_service_1.HeroSearchService]
+            selector: 'attendee-search',
+            templateUrl: './attendee-search.component.html',
+            styleUrls: ['./attendee-search.component.css'],
+            providers: [attendee_search_service_1.AttendeeSearchService]
         }), 
-        __metadata('design:paramtypes', [hero_search_service_1.HeroSearchService, router_1.Router])
-    ], HeroSearchComponent);
-    return HeroSearchComponent;
+        __metadata('design:paramtypes', [attendee_search_service_1.AttendeeSearchService, router_1.Router])
+    ], AttendeeSearchComponent);
+    return AttendeeSearchComponent;
 }());
-exports.HeroSearchComponent = HeroSearchComponent;
+exports.AttendeeSearchComponent = AttendeeSearchComponent;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 */ 
-//# sourceMappingURL=hero-search.component.js.map
+//# sourceMappingURL=attendee-search.component.js.map

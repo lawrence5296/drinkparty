@@ -11,61 +11,61 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var http_1 = require('@angular/http');
 require('rxjs/add/operator/toPromise');
-var HeroService = (function () {
-    function HeroService(http) {
+var AttendeeService = (function () {
+    function AttendeeService(http) {
         this.http = http;
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
-        this.heroesUrl = 'api/heroes'; // URL to web api
+        this.attendeesUrl = 'api/attendees'; // URL to web api
     }
-    HeroService.prototype.getHeroes = function () {
-        return this.http.get(this.heroesUrl)
+    AttendeeService.prototype.getAttendees = function () {
+        return this.http.get(this.attendeesUrl)
             .toPromise()
             .then(function (response) { return response.json().data; })
             .catch(this.handleError);
     };
-    HeroService.prototype.getHero = function (id) {
-        var url = this.heroesUrl + "/" + id;
+    AttendeeService.prototype.getAttendee = function (id) {
+        var url = this.attendeesUrl + "/" + id;
         return this.http.get(url)
             .toPromise()
             .then(function (response) { return response.json().data; })
             .catch(this.handleError);
     };
-    HeroService.prototype.delete = function (id) {
-        var url = this.heroesUrl + "/" + id;
+    AttendeeService.prototype.delete = function (id) {
+        var url = this.attendeesUrl + "/" + id;
         return this.http.delete(url, { headers: this.headers })
             .toPromise()
             .then(function () { return null; })
             .catch(this.handleError);
     };
-    HeroService.prototype.create = function (name) {
+    AttendeeService.prototype.create = function (name) {
         return this.http
-            .post(this.heroesUrl, JSON.stringify({ name: name }), { headers: this.headers })
+            .post(this.attendeesUrl, JSON.stringify({ name: name }), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json().data; })
             .catch(this.handleError);
     };
-    HeroService.prototype.update = function (hero) {
-        var url = this.heroesUrl + "/" + hero.id;
+    AttendeeService.prototype.update = function (attendee) {
+        var url = this.attendeesUrl + "/" + attendee.id;
         return this.http
-            .put(url, JSON.stringify(hero), { headers: this.headers })
+            .put(url, JSON.stringify(attendee), { headers: this.headers })
             .toPromise()
-            .then(function () { return hero; })
+            .then(function () { return attendee; })
             .catch(this.handleError);
     };
-    HeroService.prototype.handleError = function (error) {
+    AttendeeService.prototype.handleError = function (error) {
         console.error('An error occurred', error); // for demo purposes only
         return Promise.reject(error.message || error);
     };
-    HeroService = __decorate([
+    AttendeeService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
-    ], HeroService);
-    return HeroService;
+    ], AttendeeService);
+    return AttendeeService;
 }());
-exports.HeroService = HeroService;
+exports.AttendeeService = AttendeeService;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 */ 
-//# sourceMappingURL=hero.service.js.map
+//# sourceMappingURL=attendee.service.js.map

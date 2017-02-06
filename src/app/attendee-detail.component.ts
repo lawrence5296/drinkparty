@@ -3,32 +3,32 @@ import { Component, OnInit }      from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location }               from '@angular/common';
 
-import { Hero }        from './hero';
-import { HeroService } from './hero.service';
+import { Attendee }        from './attendee';
+import { AttendeeService } from './attendee.service';
 
 @Component({
   moduleId: module.id,
-  selector: 'my-hero-detail',
-  templateUrl: './hero-detail.component.html',
-  styleUrls: [ './hero-detail.component.css' ]
+  selector: 'my-attendee-detail',
+  templateUrl: './attendee-detail.component.html',
+  styleUrls: [ './attendee-detail.component.css' ]
 })
-export class HeroDetailComponent implements OnInit {
-  hero: Hero;
+export class AttendeeDetailComponent implements OnInit {
+  attendee: Attendee;
 
   constructor(
-    private heroService: HeroService,
+    private attendeeService: AttendeeService,
     private route: ActivatedRoute,
     private location: Location
   ) {}
 
   ngOnInit(): void {
     this.route.params
-      .switchMap((params: Params) => this.heroService.getHero(+params['id']))
-      .subscribe(hero => this.hero = hero);
+      .switchMap((params: Params) => this.attendeeService.getAttendee(+params['id']))
+      .subscribe(attendee => this.attendee = attendee);
   }
 
   save(): void {
-    this.heroService.update(this.hero)
+    this.attendeeService.update(this.attendee)
       .then(() => this.goBack());
   }
 

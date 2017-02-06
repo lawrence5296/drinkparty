@@ -11,10 +11,10 @@ import { InMemoryDataService }  from './in-memory-data.service';
 
 import { AppComponent }         from './app.component';
 import { DashboardComponent }   from './dashboard.component';
-import { HeroesComponent }      from './heroes.component';
-import { HeroDetailComponent }  from './hero-detail.component';
-import { HeroService }          from './hero.service';
-import { HeroSearchComponent }  from './hero-search.component';
+import { AttendeesComponent }      from './attendees.component';
+import { AttendeeDetailComponent }  from './attendee-detail.component';
+import { AttendeeService }          from './attendee.service';
+import { AttendeeSearchComponent }  from './attendee-search.component';
 
 @NgModule({
   imports: [
@@ -27,11 +27,11 @@ import { HeroSearchComponent }  from './hero-search.component';
   declarations: [
     AppComponent,
     DashboardComponent,
-    HeroDetailComponent,
-    HeroesComponent,
-    HeroSearchComponent
+    AttendeeDetailComponent,
+    AttendeesComponent,
+    AttendeeSearchComponent
   ],
-  providers: [ HeroService ],
+  providers: [ AttendeeService ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

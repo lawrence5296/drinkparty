@@ -1,13 +1,13 @@
 "use strict";
-var Hero = (function () {
-    function Hero() {
+var Attendee = (function () {
+    function Attendee() {
     }
-    return Hero;
+    return Attendee;
 }());
-exports.Hero = Hero;
+exports.Attendee = Attendee;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 */ 
-//# sourceMappingURL=hero.js.map
+//# sourceMappingURL=attendee.js.map

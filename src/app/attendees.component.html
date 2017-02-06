@@ -1,0 +1,29 @@
+<h2>My Attendees</h2>
+<div>
+  <label>Attendee name:</label> <input #attendeeName />
+  <button (click)="add(attendeeName.value); attendeeName.value=''">
+    Add
+  </button>
+</div>
+<ul class="attendees">
+  <li *ngFor="let attendee of attendees" (click)="onSelect(attendee)"
+      [class.selected]="attendee === selectedAttendee">
+    <span class="badge">{{attendee.id}}</span>
+    <span>{{attendee.name}}</span>
+    <button class="delete"
+      (click)="delete(attendee); $event.stopPropagation()">x</button>
+  </li>
+</ul>
+<div *ngIf="selectedAttendee">
+  <h2>
+    {{selectedAttendee.name | uppercase}} is my attendee
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
+
+
+<!-- 
+Copyright 2016 Google Inc. All Rights Reserved.
+Use of this source code is governed by an MIT-style license that
+can be found in the LICENSE file at http://angular.io/license
+-->

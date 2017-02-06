@@ -3,54 +3,54 @@ import { Headers, Http } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
-import { Hero } from './hero';
+import { Attendee } from './attendee';
 
 @Injectable()
-export class HeroService {
+export class AttendeeService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
-  private heroesUrl = 'api/heroes';  // URL to web api
+  private attendeesUrl = 'api/attendees';  // URL to web api
 
   constructor(private http: Http) { }
 
-  getHeroes(): Promise<Hero[]> {
-    return this.http.get(this.heroesUrl)
+  getAttendees(): Promise<Attendee[]> {
+    return this.http.get(this.attendeesUrl)
                .toPromise()
-               .then(response => response.json().data as Hero[])
+               .then(response => response.json().data as Attendee[])
                .catch(this.handleError);
   }
 
 
-  getHero(id: number): Promise<Hero> {
-    const url = `${this.heroesUrl}/${id}`;
+  getAttendee(id: number): Promise<Attendee> {
+    const url = `${this.attendeesUrl}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Hero)
+      .then(response => response.json().data as Attendee)
       .catch(this.handleError);
   }
 
   delete(id: number): Promise<void> {
-    const url = `${this.heroesUrl}/${id}`;
+    const url = `${this.attendeesUrl}/${id}`;
     return this.http.delete(url, {headers: this.headers})
       .toPromise()
       .then(() => null)
       .catch(this.handleError);
   }
 
-  create(name: string): Promise<Hero> {
+  create(name: string): Promise<Attendee> {
     return this.http
-      .post(this.heroesUrl, JSON.stringify({name: name}), {headers: this.headers})
+      .post(this.attendeesUrl, JSON.stringify({name: name}), {headers: this.headers})
       .toPromise()
       .then(res => res.json().data)
       .catch(this.handleError);
   }
 
-  update(hero: Hero): Promise<Hero> {
-    const url = `${this.heroesUrl}/${hero.id}`;
+  update(attendee: Attendee): Promise<Attendee> {
+    const url = `${this.attendeesUrl}/${attendee.id}`;
     return this.http
-      .put(url, JSON.stringify(hero), {headers: this.headers})
+      .put(url, JSON.stringify(attendee), {headers: this.headers})
       .toPromise()
-      .then(() => hero)
+      .then(() => attendee)
       .catch(this.handleError);
   }
 
