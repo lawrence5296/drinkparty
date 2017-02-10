@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Attendee }        from './attendee';
 import { AttendeeService } from './attendee.service';
 
@@ -12,7 +11,9 @@ import { AttendeeService } from './attendee.service';
 export class DashboardComponent implements OnInit {
   attendees: Attendee[] = [];
 
-  constructor(private attendeeService: AttendeeService) { }
+  constructor(
+    private attendeeService: AttendeeService,
+            ) { }
 
   ngOnInit(): void {
     this.attendeeService.getAttendees()
